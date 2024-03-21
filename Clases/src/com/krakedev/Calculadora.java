@@ -29,6 +29,16 @@ public class Calculadora {
 	public double dividir(double dividendo, double divisor) {
 		return dividendo/divisor;
 	}
+	/**
+	 * metodo promediar
+	 * @param valor1
+	 * @param valor2
+	 * @param valor3
+	 * @return
+	 */
+	public double promediar(double valor1,double valor2,double valor3) {
+		return (valor1+valor2+valor3)/3;
+	}
 	
 
 }
