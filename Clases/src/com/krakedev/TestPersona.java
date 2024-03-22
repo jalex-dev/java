@@ -11,25 +11,25 @@ public class TestPersona {
 		p= new Persona(); //2)Instaciar un objeto Persona, referenciarlo con p
 		Persona p2 = new Persona();
 		
-		System.out.println("Nombre: "+ p.nombre);
-		System.out.println("Edad :" + p.edad);
-		System.out.println("Estatura: "+ p.estatura);
+		System.out.println("Nombre: "+ p.getNombre());
+		System.out.println("Edad :" + p.getEdad());
+		System.out.println("Estatura: "+ p.getEstatura());
 		
 		System.out.println("--------------------");
 		
-		p.nombre = "Mario";
-		p.edad = 23;
-		p.estatura = 1.64;
+		p.setNombre("Mario");
+		p.setEdad(23);
+		p.setEstatura(1.64);
 		
-		System.out.println("Nombre: "+ p.nombre);
-		System.out.println("Edad :" + p.edad);
-		System.out.println("Estatura: "+ p.estatura);
+		System.out.println("Nombre: "+ p.getNombre());
+		System.out.println("Edad :" + p.getEdad());
+		System.out.println("Estatura: "+ p.getEstatura());
 		
-		p2.nombre = "Angelica";
+		p2.setNombre("Angelica");
 		
 		System.out.println("***********");
-		System.out.println("p.nombre: "+ p.nombre);
-		System.out.println("p2.nombre: "+p2.nombre);
+		System.out.println("p.nombre: "+ p.getNombre());
+		System.out.println("p2.nombre: "+p2.getNombre());
 
 	}
 

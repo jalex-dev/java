@@ -5,6 +5,7 @@ public class Fecha {
 	private int dia;
 	private int mes;
 	private int anio;
+	
 	public int getDia() {
 		return dia;
 	}
