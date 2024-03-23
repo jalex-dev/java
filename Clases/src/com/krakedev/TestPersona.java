@@ -10,6 +10,12 @@ public class TestPersona {
 		Persona p;//1. Declaro una variablr de tipo Persona
 		p= new Persona(); //2)Instaciar un objeto Persona, referenciarlo con p
 		Persona p2 = new Persona();
+		Persona p3 = new Persona("Joao");
+		Persona p4 = new Persona("Alex", 52, 1.70);
+		
+		System.out.println("Nombre: "+ p4.getNombre());
+		System.out.println("Edad :" + p4.getEdad());
+		System.out.println("Estatura: "+ p4.getEstatura());
 		
 		System.out.println("Nombre: "+ p.getNombre());
 		System.out.println("Edad :" + p.getEdad());
