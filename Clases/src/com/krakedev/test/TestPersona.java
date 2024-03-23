@@ -1,5 +1,6 @@
-package com.krakedev;
+package com.krakedev.test;
 
+import com.krakedev.Persona;
 
 /**
  * comentario de varias lineas

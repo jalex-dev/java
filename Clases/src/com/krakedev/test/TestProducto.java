@@ -1,7 +1,9 @@
 /**
  * 
  */
-package com.krakedev;
+package com.krakedev.test;
+
+import com.krakedev.Producto;
 
 /**
  * 
