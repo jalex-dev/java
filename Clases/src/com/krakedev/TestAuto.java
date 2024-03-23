@@ -3,8 +3,13 @@ package com.krakedev;
 public class TestAuto {
 
 	public static void main(String[] args) {
-		Auto auto1 = new Auto();
-		Auto auto2 = new Auto();
+		Auto auto1 = new Auto("FORD",2019,33533.98);
+		Auto auto2 = new Auto("Mazda",2020,20312);
+		
+		System.out.println("--------Auto 1----------");
+		System.out.println("Marca: "+ auto1.getMarca());
+		System.out.println("Año: "+ auto1.getAnio());
+		System.out.println("Precio: "+ auto1.getPrecio());
 		
 		//modificar los atributos del objeto auto1
 		auto1.setMarca("Mazda");
