@@ -2,7 +2,9 @@ package com.krakedev.persistencia.servicios;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -102,6 +104,123 @@ public class AdminPersonas {
 		} finally {
 			ConxionBDD.cerrarConexion(con);
 		}
+	}
+	
+	public static ArrayList<Persona> buscarPorNombre(String nombreBusqueda) throws Exception{
+		ArrayList<Persona> personas= new ArrayList<Persona>();
+		Connection con = null;
+		PreparedStatement ps= null;
+		ResultSet rs= null;
+		
+		try {
+			con=ConxionBDD.conectar();
+			ps=con.prepareStatement("select * from personas where nombre like ?");
+			ps.setString(1, "%"+nombreBusqueda+"%");
+			
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				String nombre=rs.getString("nombre");
+				String cedula= rs.getString("cedula");
+				Persona p= new Persona();
+				p.setNombre(nombre);
+				p.setCedula(cedula);
+				personas.add(p);
+				
+				
+			}
+			
+			
+		} catch (Exception e) {
+			LOGGER.error("Error al consultar por nombre", e);
+			throw new Exception("Error al consultar por nombre");
+		}finally {
+			ConxionBDD.cerrarConexion(con);
+
+		}
+		
+		return personas;
+		
+		
+	}
+	
+	public static Persona buscarCedula (String cedula) throws Exception{
+		Persona persona= new Persona();
+		
+		Connection con = null;
+		PreparedStatement ps= null;
+		ResultSet rs;
+		
+		try {
+			con=ConxionBDD.conectar();
+			ps=con.prepareStatement("select * from personas where cedula= ?");
+			ps.setString(1, cedula);
+			rs=ps.executeQuery();
+			
+			if(rs.next()) {
+				String nombre = rs.getString("nombre");
+	            String cedulaPersona = rs.getString("cedula");
+
+	            // Crear una instancia de Persona con los datos recuperados de la base de datos
+	            persona = new Persona();
+	            persona.setNombre(nombre);
+	            persona.setCedula(cedulaPersona);
+				
+				
+			}else {
+				return null;
+			}
+			
+			
+			
+		} catch (Exception e) {
+			LOGGER.error("Error al consultar por cedula", e);
+			throw new Exception("Error al consultar por cedula");
+		}finally {
+			ConxionBDD.cerrarConexion(con);
+		}
+		
+		
+		return persona;
+		
+		
+	}
+	
+	public static Persona buscarArgumentos(String nombre, String apellido) throws Exception{
+		
+		Persona persona= new Persona();
+		
+		Connection con = null;
+		PreparedStatement ps= null;
+		ResultSet rs= null;
+		
+		try {
+			con= ConxionBDD.conectar();
+			ps=con.prepareStatement("select * from personas where nombre = ? and apellido= ?");
+			ps.setString(1, nombre);
+			ps.setString(2, apellido);
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				String nombre1=rs.getString("nombre");
+				String cedula1= rs.getString("cedula");
+				
+				persona.setNombre(nombre);
+				persona.setCedula(cedula1);
+
+				
+			}
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			ConxionBDD.cerrarConexion(con);
+
+		}
+		
+		return persona;
+		
 	}
 
 }
